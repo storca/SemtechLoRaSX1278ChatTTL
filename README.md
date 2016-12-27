@@ -8,11 +8,11 @@ The file "tr.ino" should be uploaded on the two arduinos.
 
 LoRa -> Arduino 
 
-GND -> GND
-VCC -> 5V
-EN -> GND
-TX -> Digital 10
-RX -> Digital 11
+GND -> GND / 
+VCC -> 5V / 
+EN -> GND / 
+TX -> Digital 10 / 
+RX -> Digital 11 / 
 
 You need to open the serial console with arduino on one computer, and open the serial console of the other arduino on another computer.
 Then you can send your messages between the two computers, BUT the messages should end by a '$' : if you want to send "hello", your command in the serial console should look like this : hello$
@@ -25,10 +25,10 @@ We don't need "SoftwareSerial.h" because the aruino mega has 4 serial ports, use
 
 LoRa -> Arduino mega
 
-GND -> GND
-VCC -> 5V
-EN -> GND
-TX -> RX1
-RX -> TX1
+GND -> GND / 
+VCC -> 5V / 
+EN -> GND / 
+TX -> RX1 / 
+RX -> TX1 / 
 
 Hope this little piece of code will help you :)
