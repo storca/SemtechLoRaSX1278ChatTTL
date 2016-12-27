@@ -1,6 +1,7 @@
 #include <SoftwareSerial.h>
 
 SoftwareSerial LORA(10, 11); // RX, TX
+int send_char = 36; //$
 
 String cmd = "";
 
@@ -17,9 +18,9 @@ void loop() {
 if (LORA.available()){
   char SerialInByte;
   SerialInByte = LORA.read();
-   if(SerialInByte==13) //carriae return
+   if(SerialInByte==13) //carriage return \n
    { 
-          Serial.print("Message recu : ");
+          Serial.print("Received message : ");
           Serial.println(cmd);
           cmd = "";
    }
@@ -27,7 +28,7 @@ if (LORA.available()){
    {
     cmd += String(SerialInByte);
           /*
-          // et afficher un message de déboggage
+          // Uncomment this for debug
           Serial.print( "SerialInByte: " );
           Serial.print( SerialInByte, DEC );
           Serial.print( ", Buffer " );
@@ -38,9 +39,9 @@ if (LORA.available()){
   {
     char SerialInByte;
     SerialInByte = Serial.read();
-   if(SerialInByte==36) //Cariage return \n
+   if(SerialInByte==send_char) //$
    {
-          Serial.print("Message envoye : ");
+          Serial.print("Message sent : ");
           Serial.println(cmd);
           LORA.println(cmd);
           cmd = "";
@@ -49,7 +50,7 @@ if (LORA.available()){
    {
     cmd += String(SerialInByte);
           /*
-          // et afficher un message de déboggage
+          // Uncomment this for debug
           Serial.print( "SerialInByte: " );
           Serial.print( SerialInByte, DEC );
           Serial.print( ", Buffer " );
